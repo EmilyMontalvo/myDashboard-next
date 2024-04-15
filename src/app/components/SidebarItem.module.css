@@ -1,0 +1,13 @@
+.sidebarItem{
+    @apply hover:bg-white/5 mt-2 transition ease-linear duration-150 w-full 
+    px-2 
+    inline-flex 
+    space-x-2 
+    items-center 
+    border-b            
+    border-slate-700 py-3 
+}
+
+.active-sidebarItem{
+    @apply  bg-blue-900 
+}
