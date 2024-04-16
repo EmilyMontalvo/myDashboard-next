@@ -1,18 +1,29 @@
+import { PokemonsResponse, SimplePokemon } from '@/app/pokemons';
 import React from 'react'
+import Image from 'next/image';
+import PokemonGrid from '@/app/pokemons/components/PokemonGrid';
 
-const getPokemons = async (limit = 20, offset = 0) => {
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit={limit}&offset={offset}`)
-    .then(res => res.json());
-    return data;
+const getPokemons = async (limit = 30, offset = 10): Promise<SimplePokemon[]> => {
+    const data: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
+        .then(res => res.json());
+
+    const pokemons = data.results.map(pokemon => ({
+        //Lo divido por / y tomo el segmneto que quiero (-2)
+        id: pokemon.url.split('/').at(-2)!,
+        name: pokemon.name
+    }))
+
+    return pokemons;
 }
 
- const  Pokemons = async() => {
+const Pokemons = async () => {
 
     const pokemons = await getPokemons();
 
     return (
-        <div>
-            {JSON.stringify(pokemons)}
+        <div className='flex flex-col'>
+            <span className='text-3xl my-2 text-center'>Listado de Pokemons <small className='font-bold'>estático</small></span>
+           <PokemonGrid pokemons={pokemons} />
         </div>
     )
 }
