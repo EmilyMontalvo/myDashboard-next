@@ -1,6 +1,5 @@
 import { PokemonsResponse, SimplePokemon } from '@/app/pokemons';
 import React from 'react'
-import Image from 'next/image';
 import PokemonGrid from '@/app/pokemons/components/PokemonGrid';
 
 const getPokemons = async (limit = 30, offset = 10): Promise<SimplePokemon[]> => {
@@ -12,7 +11,6 @@ const getPokemons = async (limit = 30, offset = 10): Promise<SimplePokemon[]> =>
         id: pokemon.url.split('/').at(-2)!,
         name: pokemon.name
     }))
-
     return pokemons;
 }
 
