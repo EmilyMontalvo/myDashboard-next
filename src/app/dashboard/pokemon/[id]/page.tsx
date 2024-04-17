@@ -1,10 +1,25 @@
-import React from 'react'
+import { Pokemon } from '@/pokemons';
+import React, { cache } from 'react'
 
-const PokemonPage = (props:any) => {
-    console.log({props})
+interface Props {
+  params: { id: string };
+}
+
+const getPokemon = async (id: string) :Promise<Pokemon> => {
+  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {cache: 'force-cache'})//TODO: cambiar esto en un futuro
+  .then(resp => resp.json())
+  return pokemon;
+}
+
+const PokemonPage = async ({ params }: Props) => {
+  // console.log({props}) (poniendo props:any)
+  //Como lo estoy generando del lado del servidor los props vienen y se imprimen ahí (los parametros de la ruta)
+
+  const pokemon = await getPokemon(params.id);
   return (
     <div>
-      holissss
+      Pokemon {params.id}
+      <div></div>
     </div>
   )
 }
