@@ -24,25 +24,25 @@ interface Props {
   return static100Pokemons
  }
 
-// export async function generateMeatadata({ params }: Props): Promise<Metadata> {
+ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
-//   try {
-//     const { id, name } = await getPokemon(params.id);
+  try {
+    const { id, name } = await getPokemonByName(params.name);
   
-//     return {
-//       title: `${name}`,
-//       description: `Información del pokemon ${id} - ${name}`
-//     }
+    return {
+      title: `${name}`,
+      description: `Información del pokemon ${id} - ${name}`
+    }
     
-//   } catch (error) {
-//     return {
-//       title: `Pokemon`,
-//       description: `Información del pokemon`
-//     }
+  } catch (error) {
+    return {
+      title: `Pokemon`,
+      description: `Información del pokemon`
+    }
     
-//   }
+  }
 
-// }
+}
 
 const getPokemonByName = async (name: string): Promise<Pokemon> => {
 

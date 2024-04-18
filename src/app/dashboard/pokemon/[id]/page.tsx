@@ -19,25 +19,25 @@ interface Props {
   }));
  }
 
-// export async function generateMeatadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
-//   try {
-//     const { id, name } = await getPokemon(params.id);
+  try {
+    const { id, name } = await getPokemon(params.id);
   
-//     return {
-//       title: `${name}`,
-//       description: `Información del pokemon ${id} - ${name}`
-//     }
+    return {
+      title: `${id}-${name}`,
+      description: `Información del pokemon ${id} - ${name}`
+    }
     
-//   } catch (error) {
-//     return {
-//       title: `Pokemon`,
-//       description: `Información del pokemon`
-//     }
+  } catch (error) {
+    return {
+      title: `Pokemon`,
+      description: `Información del pokemon`
+    }
     
-//   }
+  }
 
-// }
+}
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
 
