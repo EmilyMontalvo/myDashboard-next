@@ -20,7 +20,7 @@ const PokemonCard = ({ pokemon }: Props) => {
                             alt={pokemon.name} 
                             priority={false} //Priority para la carga progresiva de la imagen
                             />
-                        <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">{pokemon.name}</p>
+                        <Link href={`/dashboard/pokemon/${pokemon.name}`} className="pt-2 text-lg font-semibold text-gray-50 capitalize">{pokemon.name}</Link>
                         <div className="mt-5">
                             <Link
                                 href={`/dashboard/pokemon/${pokemon.id}`}
