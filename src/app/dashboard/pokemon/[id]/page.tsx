@@ -9,35 +9,44 @@ interface Props {
   params: { id: string };
 }
 
-export async function generateMeatadata({ params }: Props): Promise<Metadata> {
+// Esta funcion solo se ejecuta en buildtime
+//Snippet gsp
+ export async function generateStaticParams() {
+  const static100Pokemons = Array.from({length:151}).map((v,i) =>`${i+1}`);
+ 
+  return static100Pokemons.map(id => ({
+      id: id
+  }));
+ }
 
-  try {
-    const { id, name } = await getPokemon(params.id);
+// export async function generateMeatadata({ params }: Props): Promise<Metadata> {
+
+//   try {
+//     const { id, name } = await getPokemon(params.id);
   
-    return {
-      title: `${name}`,
-      description: `Información del pokemon ${id} - ${name}`
-    }
+//     return {
+//       title: `${name}`,
+//       description: `Información del pokemon ${id} - ${name}`
+//     }
     
-  } catch (error) {
-    return {
-      title: `Pokemon`,
-      description: `Información del pokemon`
-    }
+//   } catch (error) {
+//     return {
+//       title: `Pokemon`,
+//       description: `Información del pokemon`
+//     }
     
-  }
+//   }
 
-}
+// }
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
 
   try {
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-      cache: 'force-cache'
-      // next:{
-      //   revalidate: 60*60*30*6
-      // }
-    })//TODO: cambiar esto en un futuro
+      next:{
+        revalidate: 60*60*30*6 // importante! VA A REVALIDAR cada cierto tiempo
+      }
+    })
       .then(resp => resp.json()) 
      
     return pokemon;

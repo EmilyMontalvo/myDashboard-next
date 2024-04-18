@@ -22,7 +22,6 @@ export default function NotFound() {
                     </div>
                 </button>
             </main>
-      
         </>
     )
 }
