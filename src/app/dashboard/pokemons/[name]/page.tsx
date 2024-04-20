@@ -41,7 +41,6 @@ interface Props {
     }
     
   }
-
 }
 
 const getPokemonByName = async (name: string): Promise<Pokemon> => {

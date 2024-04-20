@@ -2,7 +2,6 @@ import { Pokemon } from '@/pokemons';
 import { Metadata, ResolvedMetadata, ResolvingMetadata } from 'next';
 import React, { cache } from 'react'
 import Image from 'next/image';
-import NotFound from '@/app/not-found';
 import { notFound } from 'next/navigation';
 
 interface Props {
