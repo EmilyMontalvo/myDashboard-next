@@ -3,9 +3,6 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { addOne, substractOne, initCounterState } from '@/store/counter/counterSlice';
 import React, { useEffect } from 'react'
 
-interface Props {
-    value?: number;
-}
 
 export interface CounterResponse {
     method: string;
