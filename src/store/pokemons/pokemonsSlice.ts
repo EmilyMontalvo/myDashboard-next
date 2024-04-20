@@ -7,8 +7,8 @@ interface PokemonsFavState {
   //! Cada una de esas llaves apuntan a un valor de tipo SimplePokemon
 }
 const initialState: PokemonsFavState = {
-  '1': { id: '1', name: 'bulbasaur' },
-  '5': { id: '5', name: 'bulbasaur' }
+  // '1': { id: '1', name: 'bulbasaur' },
+  // '5': { id: '5', name: 'bulbasaur' }
 }
 
 const pokemonsSlice = createSlice({

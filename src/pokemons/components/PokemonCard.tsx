@@ -54,8 +54,8 @@ const PokemonCard = ({ pokemon }: Props) => {
                                 <div className="pl-3">
                                     <p className="text-sm font-medium text-gray-800 leading-none">
                                         {isFavorite
-                                            ? 'No es favorito'
-                                            : 'Es favorito'
+                                            ?  'Es favorito'
+                                            : 'No es favorito'
                                         }
                                     </p>
                                     <p className="text-xs text-gray-500">View your campaigns</p>
