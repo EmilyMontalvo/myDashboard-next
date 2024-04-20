@@ -7,15 +7,31 @@ interface Props {
     value?: number;
 }
 
-const CartCounter = ({ value = 0 }: Props) => { 
+export interface CounterResponse {
+    method: string;
+    count:  number;
+}
+
+
+const getApiCounter = async(): Promise<CounterResponse> => {
+    const data = await fetch('/api/counter')
+    .then(res => res.json())
+    return data
+}
+
+const CartCounter = () => { 
     //!  1. El valor que viene es 10, que se debería cargar cuando se inicia el componente o cero que se viene por defecto
 
     const count = useAppSelector(state => state.counter.count);
     const dispatch = useAppDispatch();
 
+    // useEffect(()=>{
+    //     dispatch(initCounterState(value)) // Ya con esto cambia el global state a lo que se mande en el value
+    // },[dispatch,value]);
+
     useEffect(()=>{
-        dispatch(initCounterState(value)) // Ya con esto cambia el global state a lo que se mande en el value
-    },[dispatch,value]);
+        getApiCounter().then(({count}) => dispatch(initCounterState(count))); // Consumo la restapi  y ya no necesito el value porque lo obtengo de mi api 
+    },[dispatch]);
 
     // ! 2. Se mandó un global state de 5.
 
