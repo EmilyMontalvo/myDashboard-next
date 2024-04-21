@@ -12,7 +12,7 @@ interface Props {
 
 const PokemonCard = ({ pokemon }: Props) => {
 
-    const isFavorite = useAppSelector(state => !!state.pokemons[pokemon.id]);
+    const isFavorite = useAppSelector(state => !!state.pokemons.favorites[pokemon.id]);
     //! doble negación !! :  lo convierte a booleano, me sale un true cuando uno si existe
     const dispatch = useAppDispatch();
     const onToggle = () => {

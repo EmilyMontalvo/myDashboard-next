@@ -5,16 +5,16 @@ import PokemonGrid from './PokemonGrid'
 import { IoHeartOutline } from 'react-icons/io5'
 
 const FavoritePokemons = () => {
-    const favoritePokemons = useAppSelector(state => Object.values(state.pokemons))
+    const favoritePokemons = useAppSelector(state => Object.values(state.pokemons.favorites))
     // El Object.values toma los valores del objeto porque no viene tipado como un "Simple pokemon" como tall
     // SI no como un Selector
-    const [pokemons, setpokemons] = useState(favoritePokemons);
+    //const [pokemons, setpokemons] = useState(favoritePokemons);
     return (
         <>
             {
-                pokemons.length === 0
+                favoritePokemons.length === 0
                     ? <NoFavorites />
-                    : <PokemonGrid pokemons={pokemons} />
+                    : <PokemonGrid pokemons={favoritePokemons} />
             }
         </>
     )
